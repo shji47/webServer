@@ -16,7 +16,7 @@ public:
     bool realeaseConnection(MYSQL *sql);
 
     void init(std::string host, std::string user, std::string passwd,
-    std::string dbname, int max_connection, unsigned int port, bool log_closed);
+    std::string dbname, int max_connection, unsigned int port);
 
 
 private:
@@ -42,17 +42,15 @@ public:
     std::string m_passwd;
     std::string m_dbname;
     unsigned int m_port;
-    bool m_log_closed;
 };
 
 class mysqlRAII {
 public:
-    mysqlRAII(MYSQL **conn, mysqlPool *conn_pool);
+    mysqlRAII(MYSQL **conn);
     ~mysqlRAII();
 
 private:
     MYSQL *m_conn;
-    mysqlPool *m_pool;
 };
 
 

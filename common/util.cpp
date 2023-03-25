@@ -1,29 +1,41 @@
-#include "webServer/common/util.h"
 #include "util.h"
 int *Utils::m_pipe_fd = nullptr;
-int Utils::m_epoll_fd = 0;
 
 void Utils::epoll_add_fd(int epoll_fd, int fd, bool one_shot, TrigMode mode) {
     epoll_event event;
-        event.data.fd = fd;
-        
-        //EPOLLIN:事件会在对端有数据写入时触发
-        //EPOLLRDHUP:事件会在对端链接关闭时触发
-        event.events = EPOLLIN | EPOLLRDHUP;
+    event.data.fd = fd;
+    
+    //EPOLLIN:事件会在对端有数据写入时触发
+    //EPOLLRDHUP:事件会在对端链接关闭时触发
+    event.events = EPOLLIN | EPOLLRDHUP;
 
-        if (mode == TrigMode::ET)
-            event.events |= EPOLLET;
-        
-        if (one_shot)
-            event.events |= EPOLLONESHOT;
-        
-        epoll_ctl(epoll_fd, EPOLL_CTL_ADD, fd, &event);
-        set_nonblocking(fd);
+    if (mode == TrigMode::ET)
+        event.events |= EPOLLET;
+    
+    if (one_shot)
+        event.events |= EPOLLONESHOT;
+    
+    epoll_ctl(epoll_fd, EPOLL_CTL_ADD, fd, &event);
+    set_nonblocking(fd);
 }
 
 void Utils::epoll_remove_fd(int epoll_fd, int fd){
     epoll_ctl(epoll_fd, EPOLL_CTL_DEL, fd, nullptr);
     close(fd);
+}
+
+void Utils::epoll_motify_fd(int epoll_fd, int fd, int event, TrigMode mode) {
+    epoll_event events;
+    events.data.fd = fd;
+
+    if (mode == TrigMode::ET) {
+        events.events = event | EPOLLET | EPOLLONESHOT | EPOLLRDHUP;
+    }
+    else {
+        events.events = event | EPOLLONESHOT | EPOLLRDHUP;
+    }
+
+    epoll_ctl(epoll_fd, EPOLL_CTL_MOD, fd, &events);
 }
 
 int Utils::set_nonblocking(int fd)

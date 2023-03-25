@@ -4,7 +4,7 @@
 //用于各种系统参数配置
 //单例
 
-#include "webServer/common/util.h"
+#include "../common/util.h"
 
 class Config {
 private:
@@ -18,9 +18,17 @@ public:
     }
 
 public:
-    int m_server_port;
-    int m_max_connection;
-    TrigMode m_mode;
+    int m_server_port = 9999;
+    bool m_async_log = true;
+    bool m_close_log = true;
+    bool m_linger = false;
+    bool m_cgi = false;
+    TrigMode m_listen_trig_mode = TrigMode::ET;
+    TrigMode m_conn_trig_mode = TrigMode::ET;
+    ActorMode m_actor_mode = ActorMode::PROACTOR;
+    int m_max_sql_num = 8;
+    int m_max_thread_num = 8;
+    
     unsigned int m_time_slot;
 };
 

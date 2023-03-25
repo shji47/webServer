@@ -11,9 +11,7 @@
 #include <stdarg.h>
 
 #include "blockQueue.hpp"
-
-#define NAME_LEN 128
-#define BUF_SIZE 256
+#include "../common/util.h"
 
 using namespace std;
 
@@ -30,8 +28,10 @@ public:
 
     void flush() {
         m_mutex.lock();
+        // std::cout<<"flush lock"<<std::endl;
         fflush(m_fd);
         m_mutex.unlock();
+        // std::cout<<"flush unlock"<<std::endl;
     }
 
     static void write_log_handler() {
@@ -47,9 +47,12 @@ private:
     void write_log_asyc() {
         string log_info;
         while (true) {
+            // while (m_log_queue->empty());
             log_info = move(m_log_queue->pop());
+            // std::cout<<log_info<<std::endl;
             m_mutex.lock();
             fputs(log_info.c_str(), m_fd);
+            fflush(m_fd);
             m_mutex.unlock();
         }
     }
@@ -57,7 +60,7 @@ private:
     //日志输出缓存
     char m_buf[BUF_SIZE];
     //日志文件存储目录
-    char m_dir_name[NAME_LEN];
+    char m_dir_name[FILE_NAME_LEN];
     //单个日志文件最大行数
     uint32_t m_max_line;
     //当前日志行数

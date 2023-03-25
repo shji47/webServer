@@ -25,12 +25,12 @@ void Log::init(const char *dir_name, size_t max_line, size_t max_size, bool is_a
     time_t t = time(nullptr);
     struct tm *sys_tm = localtime(&t);
 
-    char file_name[BUF_SIZE];
-    memset(file_name, '\0', BUF_SIZE);
+    char file_name[FILE_NAME_LEN];
+    memset(file_name, '\0', FILE_NAME_LEN);
     //dir/year_day_log.log
-    snprintf(file_name, BUF_SIZE, "%s%d_%02d_%02d_%s_%02ld%s", m_dir_name, sys_tm->tm_year + 1900, sys_tm->tm_mon + 1, sys_tm->tm_mday, "log", m_log_index, ".log");
+    snprintf(file_name, FILE_NAME_LEN, "%s%d_%02d_%02d_%s_%02ld%s", m_dir_name, sys_tm->tm_year + 1900, sys_tm->tm_mon + 1, sys_tm->tm_mday, "log", m_log_index, ".log");
     ++m_log_index;
-
+    
     m_cur_day = sys_tm->tm_mday;
 
     m_fd = fopen(file_name, "a");
@@ -68,6 +68,8 @@ void Log::write_log(int level, const char *format, ...) {
     }
     
     m_mutex.lock();
+    // std::cout<<"lock1"<<std::endl;
+
     ++m_cur_line;
 
     if (m_cur_day != sys_tm->tm_mday || m_cur_line >= m_max_line) {
@@ -76,11 +78,11 @@ void Log::write_log(int level, const char *format, ...) {
             m_log_index = 0;
             m_cur_day = sys_tm->tm_mday;
         }
-        char file_name[BUF_SIZE];
+        char file_name[FILE_NAME_LEN];
         fflush(m_fd);
         fclose(m_fd);
 
-        snprintf(file_name, BUF_SIZE, "%s%d_%02d_%02d_%s_%02ld%s", m_dir_name, sys_tm->tm_year + 1900, sys_tm->tm_mon + 1, sys_tm->tm_mday, "log", m_log_index, ".log");
+        snprintf(file_name, FILE_NAME_LEN, "%s%d_%02d_%02d_%s_%02ld%s", m_dir_name, sys_tm->tm_year + 1900, sys_tm->tm_mon + 1, sys_tm->tm_mday, "log", m_log_index, ".log");
         ++m_log_index;
 
         m_fd = fopen(file_name, "a");
@@ -91,6 +93,7 @@ void Log::write_log(int level, const char *format, ...) {
     }
 
     m_mutex.unlock();
+    // std::cout<<"unlock1"<<std::endl;
 
     va_list valst;
     va_start(valst, format);
@@ -113,6 +116,7 @@ void Log::write_log(int level, const char *format, ...) {
     }
     else {
         m_mutex.lock();
+        
         fputs(m_buf, m_fd);
         m_mutex.unlock();
     }

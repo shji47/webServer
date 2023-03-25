@@ -15,10 +15,10 @@ template<typename T>
 class blockQueue {
 public:
     blockQueue(size_t max_size = 1000) {
-        m_queue = vector<T>(max_size);
+        m_queue = new T[max_size];
         m_max_size = max_size;
         m_size = 0;
-        m_front = -1;
+        m_front = 0;
         m_tail = 0;
         sem_init(&m_full_buffers, 0, 0);
         sem_init(&m_empty_buffers, 0, max_size);
@@ -28,7 +28,7 @@ public:
         m_mutex.lock();
         
         m_size = 0;
-        m_front = -1;
+        m_front = 0;
         m_tail = 0;
         sem_init(&m_full_buffers, 0, 0);
         sem_init(&m_empty_buffers, 0, m_max_size);
@@ -84,7 +84,6 @@ public:
 
     T pop() {
         sem_wait(&m_full_buffers);
-
         m_mutex.lock();
         T& ret = m_queue[m_front];
         m_front = (m_front + 1) % m_max_size;
@@ -97,7 +96,7 @@ public:
     
 
 private:
-    vector<T> m_queue;
+    T *m_queue;
     size_t m_max_size;
     size_t m_size;
     size_t m_front;

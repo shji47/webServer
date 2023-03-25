@@ -1,0 +1,375 @@
+2023-03-25 20:43:29 info: 
+
+
+
+
+****************************************
+2023-03-25 20:43:29 info: Log System Running...
+2023-03-25 20:43:29 info: Sql Pool System Running...
+2023-03-25 20:43:29 info: Thread Pool System Running...
+2023-03-25 20:44:53 info: 
+
+
+
+
+****************************************
+2023-03-25 20:44:53 info: Log System Running...
+2023-03-25 20:44:53 info: Sql Pool System Running...
+2023-03-25 20:44:53 info: Thread Pool System Running...
+2023-03-25 20:44:55 info: 
+
+
+
+
+****************************************
+2023-03-25 20:44:55 info: Log System Running...
+2023-03-25 20:44:55 info: Sql Pool System Running...
+2023-03-25 20:44:55 info: Thread Pool System Running...
+2023-03-25 20:44:56 info: 
+
+
+
+
+****************************************
+2023-03-25 20:44:56 info: Log System Running...
+2023-03-25 20:44:56 info: Sql Pool System Running...
+2023-03-25 20:44:56 info: Thread Pool System Running...
+2023-03-25 20:44:58 info: 
+
+
+
+
+****************************************
+2023-03-25 20:44:58 info: Log System Running...
+2023-03-25 20:44:58 info: Sql Pool System Running...
+2023-03-25 20:44:58 info: Thread Pool System Running...
+2023-03-25 20:45:23 info: 
+
+
+
+
+****************************************
+2023-03-25 20:45:23 info: Log System Running...
+2023-03-25 20:45:23 info: Sql Pool System Running...
+2023-03-25 20:45:23 info: Thread Pool System Running...
+2023-03-25 20:45:31 info: Accept new connecton: 16
+2023-03-25 20:45:31 info: Shutdown connection: 16
+2023-03-25 20:45:32 info: Accept new connecton: 16
+2023-03-25 20:45:32 info: Accept new connecton: 17
+2023-03-25 20:45:32 info: Accept new connecton: 18
+2023-03-25 20:45:32 info: Accept new connecton: 24
+2023-03-25 20:45:32 info: Accept new connecton: 25
+2023-03-25 20:45:32 info: Accept new connecton: 26
+2023-03-25 20:45:32 info: Accept new connecton: 27
+2023-03-25 20:45:32 info: Deal 16 read request
+2023-03-25 20:45:32 info: Parse info :GET / HTTP/1.0
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 20:45:32 info: Deal 17 read request
+2023-03-25 20:45:32 info: Parse info :GET / HTTP/1.0
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 20:45:32 info: Deal 18 read request
+2023-03-25 20:45:32 info: Parse info :GET / HTTP/1.0
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 20:45:32 info: Deal 24 read request
+2023-03-25 20:45:32 info: Parse info :GET / HTTP/1.0
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 20:45:32 info: Deal 25 read request
+2023-03-25 20:45:32 info: Parse info :GET / HTTP/1.0
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 20:45:32 info: Deal 26 read request
+2023-03-25 20:45:32 info: Parse info :GET / HTTP/1.0
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 20:45:32 info: Deal 27 read request
+2023-03-25 20:45:32 info: Parse info :GET / HTTP/1.0
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 20:45:32 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 20:45:32 info: Deal 16 write request
+2023-03-25 21:04:09 info: 
+
+
+
+
+****************************************
+2023-03-25 21:04:09 info: Log System Running...
+2023-03-25 21:04:09 info: Sql Pool System Running...
+2023-03-25 21:04:09 info: Thread Pool System Running...
+2023-03-25 21:04:13 info: Accept new connecton: 16
+2023-03-25 21:04:13 info: Shutdown connection: 16
+2023-03-25 21:04:14 info: Accept new connecton: 16
+2023-03-25 21:04:14 info: Accept new connecton: 17
+2023-03-25 21:04:14 info: Accept new connecton: 18
+2023-03-25 21:04:14 info: Accept new connecton: 24
+2023-03-25 21:04:14 info: Accept new connecton: 25
+2023-03-25 21:04:14 info: Deal 16 read request
+2023-03-25 21:04:14 info: Request info: GET / HTTP/1.0
+User-Agent: WebBench 1.5
+Host: localhost
+
+
+2023-03-25 21:04:14 info: Parse info: GET / HTTP/1.0
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 21:04:14 info: Deal 17 read request
+2023-03-25 21:04:14 info: Request info: GET / HTTP/1.0
+User-Agent: WebBench 1.5
+Host: localhost
+
+
+2023-03-25 21:04:14 info: Parse info: GET / HTTP/1.0
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 21:04:14 info: Deal 18 read request
+2023-03-25 21:04:14 info: Request info: GET / HTTP/1.0
+User-Agent: WebBench 1.5
+Host: localhost
+
+
+2023-03-25 21:04:14 info: Parse info: GET / HTTP/1.0
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 21:04:14 info: Deal 24 read request
+2023-03-25 21:04:14 info: Request info: GET / HTTP/1.0
+User-Agent: WebBench 1.5
+Host: localhost
+
+
+2023-03-25 21:04:14 info: Parse info: GET / HTTP/1.0
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 21:04:14 info: Deal 25 read request
+2023-03-25 21:04:14 info: Request info: GET / HTTP/1.0
+User-Agent: WebBench 1.5
+Host: localhost
+
+
+2023-03-25 21:04:14 info: Parse info: GET / HTTP/1.0
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+
+2023-03-25 21:04:14 info: Response: HTTP/1.1 404 Not Found
+Content-Length:49
+Connection:close
+
+The requested file was not found on this server.
+
+2023-03-25 21:04:14 info: Accept new connecton: 26
+2023-03-25 21:04:14 info: Accept new connecton: 27
+2023-03-25 21:04:14 info: Accept new connecton: 28
+2023-03-25 21:04:14 info: Accept new connecton: 29
+2023-03-25 21:04:14 info: Accept new connecton: 30
+2023-03-25 21:04:14 info: Deal 16 write request

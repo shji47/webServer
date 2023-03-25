@@ -6,33 +6,31 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <errno.h>
-#include <bits/sigaction.h>
+// #include <bits/sigaction.h>
 #include <string.h>
 #include <signal.h>
 #include <assert.h>
 #include <unistd.h>
 
+#define FILE_NAME_LEN 200
+#define BUF_SIZE 2048
+#define READ_BUFFER_SIZE 2048
+#define WRITE_BUFFER_SIZE 1024
+//最大连接数
+#define MAX_CONNECTION 65536
+#define MAX_EVENTS_NUMBER 10000
 enum TrigMode {
     ET = 0,
     LT
 };
 
+enum ActorMode {
+    PROACTOR = 0,
+    REACTOR
+};
+
 class HttpState {
 public:
-    static const int FILENAME_LEN = 200;
-    static const int READ_BUFFER_SIZE = 2048;
-    static const int WRITE_BUFFER_SIZE = 1024;
-
-    const char *ok_200_title = "OK";
-    const char *error_400_title = "Bad Request";
-    const char *error_400_form = "Your request has bad syntax or is inherently impossible to stasify.\n";
-    const char *error_403_title = "Forbidden";
-    const char *error_403_form = "You don't have permission to get file from this server.\n";
-    const char *error_404_title = "Not Found";
-    const char *error_404_form = "The requested file was not found on this server.\n";
-    const char *error_500_title = "Internal Error";
-    const char *error_500_form = "There was an unusual problem serving the request file.\n";
-
     enum Method {
         GET = 0,
         POST,
@@ -77,18 +75,18 @@ public:
 
 class Utils {
 public:
-    void epoll_add_fd(int epoll_fd, int fd, bool one_shot, TrigMode mode);
-    void epoll_remove_fd(int epoll_fd, int fd);
+    static void epoll_add_fd(int epoll_fd, int fd, bool one_shot, TrigMode mode);
+    static void epoll_remove_fd(int epoll_fd, int fd);
+    static void epoll_motify_fd(int epoll_fd, int fd, int event, TrigMode mode);
 
-    int set_nonblocking(int fd);
+    static int set_nonblocking(int fd);
 
     static void sig_handler(int sig);
 
-    void add_sig(int sig, void(handler)(int), bool restart);
+    static void add_sig(int sig, void(handler)(int), bool restart);
 
 public:
     static int *m_pipe_fd;
-    static int m_epoll_fd;
 };
 
 #endif
