@@ -62,7 +62,7 @@ bool mysqlPool::realeaseConnection(MYSQL* conn) {
     if (!conn)
         return false;
 
-    m_mutex.unlock();
+    m_mutex.lock();
 
     m_conn_list.emplace_back(conn);
     --m_used_connection;
@@ -89,8 +89,8 @@ mysqlPool::~mysqlPool() {
 }
 
 mysqlRAII::mysqlRAII(MYSQL **conn) {
-    m_conn = mysqlPool::singleton()->getConnection();
-    *conn = m_conn;
+    *conn = mysqlPool::singleton()->getConnection();
+    m_conn = *conn;
 }
 
 mysqlRAII::~mysqlRAII() {

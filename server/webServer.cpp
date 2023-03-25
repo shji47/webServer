@@ -235,17 +235,13 @@ void WebServer::deal_read_request(int sock_fd)
     LOG_INFO("Deal %d read request", sock_fd);
     m_users[sock_fd].m_state = 0;
     if (m_actor_mode == ActorMode::PROACTOR) {
-        std::cout<<"before read"<<std::endl;
         if (m_users[sock_fd].read()) {
-            std::cout<<"add task before"<<std::endl;
             threadPool::singleton()->add_task(&m_users[sock_fd]);
-            std::cout<<"add task end"<<std::endl;
         }
         else {
             Utils::epoll_remove_fd(m_epoll_fd, sock_fd);
             --HttpConnection::user_count;
         }
-        std::cout<<"end read"<<std::endl;
     }
     else if (m_actor_mode == ActorMode::REACTOR) {
         threadPool::singleton()->add_task(&m_users[sock_fd]);

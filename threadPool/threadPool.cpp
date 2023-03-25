@@ -27,8 +27,10 @@ void threadPool::run() {
     while (true) {
         HttpConnection *task = m_task_queue->pop();
         if (m_actor_mode == ActorMode::PROACTOR) {
+            //error
             mysqlRAII mysql_raii(&task->m_mysql);
             task->process();
+            // std::cout<<"end"<<std::endl;
         }
         else if (m_actor_mode == ActorMode::REACTOR) {
             if (task->m_state == 0) {

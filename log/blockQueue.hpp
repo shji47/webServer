@@ -66,7 +66,7 @@ public:
         sem_wait(&m_empty_buffers);
 
         m_mutex.lock();
-        m_queue[m_tail] = move(val);
+        m_queue[m_tail] = val;
         m_tail = (m_tail + 1) % m_max_size;
         ++m_size; 
         m_mutex.unlock();

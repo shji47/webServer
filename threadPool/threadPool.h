@@ -11,7 +11,7 @@
 class threadPool {
 public:
     static threadPool* singleton(){
-        //好想会和Log产生竞争
+        //好像会和Log产生竞争
         // static threadPool instance;
         // return &instance;
         if (m_instance == nullptr) {
