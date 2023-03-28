@@ -61,7 +61,7 @@ MYSQL* mysqlPool::getConnection() {
 bool mysqlPool::realeaseConnection(MYSQL* conn) {
     if (!conn)
         return false;
-
+    
     m_mutex.lock();
 
     m_conn_list.emplace_back(conn);
