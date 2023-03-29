@@ -1,5 +1,6 @@
 #include "util.h"
 int *Utils::m_pipe_fd = nullptr;
+int Utils::m_epoll_fd = 0;
 
 void Utils::epoll_add_fd(int epoll_fd, int fd, bool one_shot, TrigMode mode) {
     epoll_event event;

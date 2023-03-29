@@ -16,6 +16,7 @@
 #include "../http/httpConnection.h"
 #include "../common/util.h"
 #include "../threadPool/threadPool.h"
+#include "../timer/timer.h"
 
 class WebServer {
 public:
@@ -78,6 +79,8 @@ public:
 
     epoll_event m_events[MAX_EVENTS_NUMBER];
     HttpConnection *m_users;
+
+    Timer m_timer;
 };
 
 #endif

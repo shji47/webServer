@@ -77,7 +77,7 @@ void WebServer::sql_pool_init() {
 }
 
 void WebServer::thread_pool_init() {
-    threadPool::singleton()->init(m_max_thread_num, 10000, m_actor_mode);
+    threadPool::singleton()->init(m_max_thread_num, 50000, m_actor_mode);
     LOG_INFO("Thread Pool System Running...");
 }
 
@@ -103,6 +103,7 @@ void WebServer::server_listen() {
     m_epoll_fd = epoll_create(5);
 
     HttpConnection::epoll_fd = m_epoll_fd;
+    Utils::m_epoll_fd = m_epoll_fd;
     Utils::epoll_add_fd(m_epoll_fd, m_listen_fd, false, m_listen_trig_mode);
     
     ret = socketpair(PF_UNIX, SOCK_STREAM, 0, m_pipe_fd);
@@ -115,6 +116,7 @@ void WebServer::server_listen() {
     Utils::add_sig(SIGTERM, Utils::sig_handler, false);
 
     alarm(cfg->m_time_slot);
+    m_timer.init(cfg->m_time_slot);
 
     Utils::m_pipe_fd = m_pipe_fd;
 }
@@ -168,13 +170,14 @@ void WebServer::deal_new_connection()
         }
         if (HttpConnection::user_count >= MAX_CONNECTION) {
             char busy_info[] = "Internal Server busy";
-            LOG_ERROR("%s", busy_info);;
+            LOG_ERROR("%s", busy_info);
             send(conn_fd, busy_info, strlen(busy_info), 0);
             close(conn_fd);
             return ;
         }
         LOG_INFO("Accept new connecton: %d", conn_fd);
         m_users[conn_fd].init(conn_fd, conn_addr, m_root_path, m_connect_trig_mode, m_cgi);
+        m_timer.add_sock(conn_fd);
     }
     else if (m_listen_trig_mode == TrigMode::ET) {
         while (true) {
@@ -192,6 +195,7 @@ void WebServer::deal_new_connection()
             }
             LOG_INFO("Accept new connecton: %d", conn_fd);
             m_users[conn_fd].init(conn_fd, conn_addr, m_root_path, m_connect_trig_mode, m_cgi);
+            m_timer.add_sock(conn_fd);
         }
     }
 }
@@ -199,7 +203,7 @@ void WebServer::deal_new_connection()
 void WebServer::deal_shutdown_connection(int sock_fd)
 {
     LOG_INFO("Shutdown connection: %d", sock_fd);
-    Utils::epoll_remove_fd(m_epoll_fd, sock_fd);
+    m_timer.del_sock(sock_fd);
     --HttpConnection::user_count;
 }
 
@@ -215,6 +219,7 @@ void WebServer::deal_arrived_signal(int sock_fd) {
             switch (signals[i]) {
                 case SIGALRM: {
                     LOG_INFO("Receive signal SIGALRM");
+                    m_timer.tick_sock();
                     m_time_out = true;
                     break;
                 }
@@ -239,7 +244,7 @@ void WebServer::deal_read_request(int sock_fd)
             threadPool::singleton()->add_task(&m_users[sock_fd]);
         }
         else {
-            Utils::epoll_remove_fd(m_epoll_fd, sock_fd);
+            m_timer.del_sock(sock_fd);
             --HttpConnection::user_count;
         }
     }
@@ -252,7 +257,7 @@ void WebServer::deal_read_request(int sock_fd)
         m_users[sock_fd].m_has_deal = false;
       
         if (m_users[sock_fd].m_kill) {
-            Utils::epoll_remove_fd(m_epoll_fd, sock_fd);
+            m_timer.del_sock(sock_fd);
             --HttpConnection::user_count;
         }
     }
@@ -264,7 +269,7 @@ void WebServer::deal_write_request(int sock_fd)
     m_users[sock_fd].m_state = 1;
     if (m_actor_mode == ActorMode::PROACTOR) {
         if (!m_users[sock_fd].write()) {
-            Utils::epoll_remove_fd(m_epoll_fd, sock_fd);
+            m_timer.del_sock(sock_fd);
             --HttpConnection::user_count;
         }
     }
@@ -273,7 +278,7 @@ void WebServer::deal_write_request(int sock_fd)
         while (!m_users[sock_fd].m_has_deal);
         m_users[sock_fd].m_has_deal = false;
         if (m_users[sock_fd].m_kill) {
-            Utils::epoll_remove_fd(m_epoll_fd, sock_fd);
+            m_timer.del_sock(sock_fd);
             --HttpConnection::user_count;
         }
     }

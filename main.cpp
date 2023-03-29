@@ -15,7 +15,7 @@ int main() {
 
     server.init(cfg->m_server_port, usr, passwd, dbname, cfg->m_max_sql_num, 
     cfg->m_max_thread_num, cfg->m_close_log, cfg->m_async_log, cfg->m_linger, cfg->m_cgi,
-    cfg->m_listen_trig_mode, cfg->m_conn_trig_mode, cfg->m_actor_mode);
+    cfg->m_listen_trig_mode, cfg->m_conn_trig_mode, cfg->m_actor_mode, cfg->m_time_out);
     // cout<<"Server init successful"<<endl;
 
     server.log_init();

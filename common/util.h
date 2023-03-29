@@ -87,6 +87,8 @@ public:
 
 public:
     static int *m_pipe_fd;
+    static int m_epoll_fd;
+    static float m_time_threshold;
 };
 
 #endif

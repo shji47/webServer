@@ -29,7 +29,8 @@ public:
     int m_max_sql_num = 8;
     int m_max_thread_num = 8;
     
-    unsigned int m_time_slot;
+    unsigned int m_time_slot = 1;
+    unsigned int m_time_out = 5;
 };
 
 #endif
